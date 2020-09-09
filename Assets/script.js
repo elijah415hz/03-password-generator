@@ -41,8 +41,9 @@ function showGetLength() {
   }
 }
 
-// Saves user input of length. Fires on click of lengthBtn
+// Save user input of length. Fires on click of lengthBtn
 function logLength() {
+  // declaring length as a global variable so it can be accessed by writePassword
   length = document.getElementById("length").value;
   // validate user input
   if ((length > 7) & (length < 129)) {
@@ -69,16 +70,16 @@ function logChars() {
   // verify the user has clicked at least one checkbox
   if (lower | upper | num | special) {
     hideById("chooseChars")
-    writePassword()
+    writePassword(length, chosenArray)
   } else {
     alert("You must select at least one character type")
   }
 }
 
 // Write password to the #password input
-function writePassword() {
+function writePassword(length, chosenArray) {
   // Call generatePassword to return the password based on user-defined parameters
-  var password = generatePassword();
+  var password = generatePassword(length, chosenArray);
 
   var passwordText = document.querySelector("#password");
   // fill in the password in the password box
@@ -87,29 +88,27 @@ function writePassword() {
 }
 
 // Generate password with paraments gathered from getLength and getChars
-function generatePassword() {
+function generatePassword(length, chosenArray) {
   var charArray = ["abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "1234567890", "!@#$%^&*?"];
-  charSet = "";
+  var charSet = "";
   for (i = 0; i < charArray.length; i++) {
-    // Generate character set by filtering with "chosenArray"
+    // Generate set of character types by filtering "charArray" with "chosenArray"
     if (chosenArray[i]) {
       charSet += charArray[i];
     }
   }
-
   // Use returnChar to generate each character
   var password = ""
   // Loop "length" times
   for (i = 0; i < length; i++) {
     // Get character from returnChar
-    password += returnChar()
+    password += returnChar(charSet)
   }
   return password;
-
 }
 
 // Return a single character from charSet
-function returnChar() {
+function returnChar(charSet) {
   // generate random number to choose character from charSet
   var index = Math.floor(Math.random() * charSet.length);
   // select character
