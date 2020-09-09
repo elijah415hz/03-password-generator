@@ -29,11 +29,37 @@ function writePassword() {
 }
 
 function generatePassword() {
+  var charArray = ["abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "1234567890", "!@#$%^&*?"];
+  var charSet = "";
+  for (i=0; i<charArray.length; i++) {
+    if (chosenArray[i]) {
+      charSet += charArray[i];
+    }
+  }
+  function returnChar() {
+    // generate random number to choose character from charSet
+    var index = Math.floor(Math.random() * charSet.length);
+    // select character
+    var char = charSet.charAt(index);
+    // return character 
+    return char;
+  }
+  function returnPassword(length) {
+    var password = ""
+    for (i=0; i<length; i++) {
+      password += returnChar()
+    }
+    return password;
+  }
+return returnPassword(length)
+}
+
+function showGetLength() {
   showById("getLength")
 }
 
 function logLength() {
-  var length = document.getElementById("length").value;
+  length = document.getElementById("length").value;
   if ((length > 7) & (length < 129)) {
     console.log(length)
     hideById("getLength")
@@ -50,16 +76,17 @@ function logChars() {
   var upper = document.getElementById("upper").checked;
   var num = document.getElementById("num").checked;
   var special = document.getElementById("special").checked;
+  chosenArray = [lower, upper, num, special]
   if (lower | upper | num | special) {
     hideById("chooseChars")
-    // Do the next thing!
+    writePassword()
   } else {
     alert("You must select at least one character type")
   }
 }
 
 // Add event listeners to buttons
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", showGetLength);
 lengthBtn.addEventListener("click", logLength);
 charBtn.addEventListener("click", logChars);
 // 
