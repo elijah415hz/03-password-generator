@@ -29,16 +29,38 @@
 
   <div class="wrapper" id="getLength">
     <div class="card">
-           <form class="card-body">
+      <form class="card-body">
         <label for="length">
           <h3>Password Length:
         </label>
         <input type="text" name="length" id="length"></h3>
+        <small>Length must be no less than 8 and no greater than 128</small>
       </form>
 
       <br>
       <div class="card-footer">
         <button id="submitLength" type="button" class="btn">Submit</button>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper" id="chooseChars">
+    <div class="card">
+      <form class="card-body">
+        <h3>Character Types:</h3>
+        <input type="checkbox" name="chars" id="lower">
+        <label for="chars">LowerCase</label><br>
+        <input type="checkbox" name="chars" id="upper">
+        <label for="chars">UpperCase</label><br>
+        <input type="checkbox" name="chars" id="num">
+        <label for="chars">Numeric</label><br>
+        <input type="checkbox" name="chars" id="special">
+        <label for="chars">Special Characters</label><br><br>
+        <small>Please select at least one character type</small>
+      </form>
+
+      <br>
+      <div class="card-footer">
+        <button id="submitChars" type="button" class="btn">Submit</button>
       </div>
     </div>
   </div>
