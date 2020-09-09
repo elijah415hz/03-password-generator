@@ -10,6 +10,7 @@
 </head>
 
 <body>
+  <!-- Main card that shows on page load -->
   <div class="wrapper">
     <header>
       <h1>Password Generator</h1>
@@ -26,7 +27,7 @@
       </div>
     </div>
   </div>
-
+<!-- Length form that shows when "Generate Password" button is clicked -->
   <div class="wrapper" id="getLength">
     <div class="card">
       <form class="card-body">
@@ -36,13 +37,13 @@
         <input type="text" name="length" id="length"></h3>
         <small>Length must be no less than 8 and no greater than 128</small>
       </form>
-
       <br>
       <div class="card-footer">
         <button id="submitLength" type="button" class="btn">Submit</button>
       </div>
     </div>
   </div>
+  <!-- Character type checkboxes form that shows when getLength's "Submit" button is clicked -->
   <div class="wrapper" id="chooseChars">
     <div class="card">
       <form class="card-body">
@@ -57,7 +58,6 @@
         <label for="chars">Special Characters</label><br><br>
         <small>Please select at least one character type</small>
       </form>
-
       <br>
       <div class="card-footer">
         <button id="submitChars" type="button" class="btn">Submit</button>
