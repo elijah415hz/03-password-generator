@@ -1,5 +1,5 @@
 // Set forms to invisible on page load
-window.onload = function() {
+window.onload = function () {
   hideById("getLength")
   hideById("chooseChars")
 }
@@ -22,9 +22,22 @@ var charBtn = document.querySelector("#submitChars");
 // Show getLength form. Fires on click of generateBtn
 function showGetLength() {
   showById("getLength");
+  // clear values when rerunning the page without refreshing
   if (document.getElementById("password").value !== "") {
     document.getElementById("password").value = ""
     document.getElementById("password").placeholder = "Your Secure Password"
+  }
+  if (document.getElementById("length").value !== "") {
+    document.getElementById("length").value = "";
+  }
+  if (document.getElementById("lower").checked ||
+      document.getElementById("upper").checked ||
+      document.getElementById("num").checked ||
+      document.getElementById("special").checked) {
+      document.getElementById("lower").checked = false;
+      document.getElementById("upper").checked = false;
+      document.getElementById("num").checked = false;
+      document.getElementById("special").checked = false;
   }
 }
 
@@ -70,14 +83,14 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   // fill in the password in the password box
   passwordText.value = password;
-  
+
 }
 
 // Generate password with paraments gathered from getLength and getChars
 function generatePassword() {
   var charArray = ["abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "1234567890", "!@#$%^&*?"];
   charSet = "";
-  for (i=0; i<charArray.length; i++) {
+  for (i = 0; i < charArray.length; i++) {
     // if the user has selected this character set, append it to the charSet string
     if (chosenArray[i]) {
       charSet += charArray[i];
@@ -91,7 +104,7 @@ function generatePassword() {
 function returnPassword(length) {
   var password = ""
   // Use returnChar to generate each character
-  for (i=0; i<length; i++) {
+  for (i = 0; i < length; i++) {
     password += returnChar()
   }
   return password;
