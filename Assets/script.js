@@ -51,7 +51,8 @@ function logLength() {
     // show next form
     showById("chooseChars")
   } else {
-    alert("Length must be no less than 8 and no greater than 128");
+    alert("Length must be between 8 and 128");
+    // clear the incorrect
     length = undefined;
     document.getElementById("length").value = "";
   }
@@ -90,23 +91,21 @@ function generatePassword() {
   var charArray = ["abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "1234567890", "!@#$%^&*?"];
   charSet = "";
   for (i = 0; i < charArray.length; i++) {
-    // if the user has selected this character set, append it to the charSet string
+    // Generate character set by filtering with "chosenArray"
     if (chosenArray[i]) {
       charSet += charArray[i];
     }
   }
-  // pass the value of returnPassword back to writePassword
-  return returnPassword(length)
-}
 
-// Call returnChar "length" times, and return password string to generatePassword
-function returnPassword(length) {
-  var password = ""
   // Use returnChar to generate each character
+  var password = ""
+  // Loop "length" times
   for (i = 0; i < length; i++) {
+    // Get character from returnChar
     password += returnChar()
   }
   return password;
+
 }
 
 // Return a single character from charSet
