@@ -21,7 +21,11 @@ var charBtn = document.querySelector("#submitChars");
 
 // Show getLength form. Fires on click of generateBtn
 function showGetLength() {
-  showById("getLength")
+  showById("getLength");
+  if (document.getElementById("password").value !== "") {
+    document.getElementById("password").value = ""
+    document.getElementById("password").placeholder = "Your Secure Password"
+  }
 }
 
 // Saves user input of length. Fires on click of lengthBtn
@@ -72,7 +76,7 @@ function writePassword() {
 // Generate password with paraments gathered from getLength and getChars
 function generatePassword() {
   var charArray = ["abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "1234567890", "!@#$%^&*?"];
-  var charSet = "";
+  charSet = "";
   for (i=0; i<charArray.length; i++) {
     // if the user has selected this character set, append it to the charSet string
     if (chosenArray[i]) {
