@@ -46,7 +46,6 @@ function logLength() {
   length = document.getElementById("length").value;
   // validate user input
   if ((length > 7) & (length < 129)) {
-    console.log(length)
     // hide form 
     hideById("getLength")
     // show next form
@@ -54,7 +53,7 @@ function logLength() {
   } else {
     alert("Length must be no less than 8 and no greater than 128");
     length = undefined;
-    document.getElementById("length").value = undefined;
+    document.getElementById("length").value = "";
   }
 }
 
