@@ -1,16 +1,16 @@
 // Set form to invisible on page load
-window.onload = function() {
+// window.onload = function() {
 
-  document.getElementById("length").style.display = "none";
+//   document.getElementById("getLength").style.display = "none";
 
-};
+// };
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  document.getElementById("length").style.display = "block";
+  document.getElementsById("getLength").style.display = "block";
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
