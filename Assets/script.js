@@ -34,10 +34,10 @@ function showGetLength() {
       document.getElementById("upper").checked ||
       document.getElementById("num").checked ||
       document.getElementById("special").checked) {
-      document.getElementById("lower").checked = false;
-      document.getElementById("upper").checked = false;
-      document.getElementById("num").checked = false;
-      document.getElementById("special").checked = false;
+    document.getElementById("lower").checked = false;
+    document.getElementById("upper").checked = false;
+    document.getElementById("num").checked = false;
+    document.getElementById("special").checked = false;
   }
 }
 
@@ -45,17 +45,22 @@ function showGetLength() {
 function logLength() {
   // declaring length as a global variable so it can be accessed by writePassword
   length = document.getElementById("length").value;
+  console.log(length)
   // validate user input
-  if ((length > 7) & (length < 129)) {
+  if (isNaN(length)) {
+    alert("Please enter a number")
+    document.getElementById("length").value = "";
+  } else if (length < 8) {
+    alert("Password length must be at least 8")
+    document.getElementById("length").value = "";
+  } else if (length > 128) {
+    alert("Password length must be no more than 128")
+    document.getElementById("length").value = "";
+  } else {
     // hide form 
     hideById("getLength")
     // show next form
     showById("chooseChars")
-  } else {
-    alert("Length must be between 8 and 128");
-    // clear the incorrect
-    length = undefined;
-    document.getElementById("length").value = "";
   }
 }
 
