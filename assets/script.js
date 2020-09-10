@@ -97,7 +97,7 @@ function writePassword(length, chosenArray) {
 
 // Generate password with paraments gathered from getLength and getChars
 function generatePassword(length, chosenArray) {
-  var charArray = ["abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "1234567890", " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"];
+  var charArray = ["abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "1234567890", "!@#$%^&*()"];
   var charSet = "";
   for (i = 0; i < charArray.length; i++) {
     // Generate set of character types by filtering "charArray" with "chosenArray"
