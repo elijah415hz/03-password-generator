@@ -39,13 +39,16 @@ function showGetLength() {
     document.getElementById("num").checked = false;
     document.getElementById("special").checked = false;
   }
+  // hide chooseChars if showing
+  if (document.getElementById("chooseChars").style.display = "block") {
+    document.getElementById("chooseChars").style.display = "none";
+  }
 }
 
 // Save user input of length. Fires on click of lengthBtn
 function logLength() {
   // declaring length as a global variable so it can be accessed by writePassword
   length = document.getElementById("length").value;
-  console.log(length)
   // validate user input
   if (isNaN(length)) {
     alert("Please enter a number")
